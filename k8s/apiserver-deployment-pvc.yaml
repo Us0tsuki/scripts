@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: crypto
+  namespace: default
+type: Opaque
+data:
+  UDC.DB_USERNAME: >-
+    QUFBQUFnQUFBQUFBQUFBQ0FBQUFBUUFBQUFmTC8rTXpIRVNYYVVvTS91eTFNS1JvV0xtNVMvTDZndzQyWTFnMVdFTURnd0FBQUFBQUFBQUFBQUFBRUVJUGx4L21RNmJDM2hpYWZLUndxRmc9Cg==
+  UDC.DB_PASSWORD: >-
+    QUFBQUFnQUFBQUFBQUFBQ0FBQUFBUUFBQUFmTC8rTXpIRVNYYWFoeHhrUkErTFhkNnRUQ2hSamJvRjMvYld1WFpQTnhhZ0FBQUFBQUFBQUFBQUFBRVBQQ3RKSjh5SlVzSWppMDJjN0liUGs9Cg==
+  UDC.REDIS_PASSWORD: >-
+    QUFBQUFnQUFBQUFBQUFBQ0FBQUFBUUFBQUFmTC8rTXpIRVNYYWVreG1pWmRJZ2ltN2lwV29JbWIrT25wbTl4UWpaY0tUZ0FBQUFBQUFBQUFBQUFBRUhyZzMrcC9yd2hTYnR5bFRFdVZWRm89Cg==
+  primary.ks: >-
+    X2SXjRlPic+oP47h2wE8DIhCShy3/K1wTkUTpRRGcWwAAgAAB+UFFAISIAQH7wUSAhIgBwAAJxDJxmRlCdqyRgcVGZGDWlBqYsjLU4iWXfZxyqF48BiB0AiVQgo1suPI1eU+uPmryg2K0FM3gWqdYoQtHvhJTWedAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwuEtF8JkSwZ4h1MVAmft9hGBgFJli5jG8RaU5piSebwAAAAIAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAei8PSpw8SIqoYk7n0A5OEahM0dorzPGu0BO5bV7tJPQAAAAAAAAABAAMBAAflBRQCEiAEB+ULEAISIAIAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHc2QL8y8sx9DwVHn2IibjMAAAAwAAAAIAc3eK+1/Edb66LfOjfmYEp4cLuQJMyiJwzkb6cpWISDoR2Hr1IwAhVGO5R5mec4sQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/Ri36MFd8OTqz6nfjb0Z0wn0hVBBun7WyIoLxkca8xsAAAACAAAAAQADAQEH5QUUAhIgBAflCxACEiACAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeZwbpt2GYA//1A6wtdSf4AAAAMAAAACDyxsCmfn+9TuBSFH5FzeN7qp/IG48pyBEiqlU1xsrlWCmghfySZrTcT8o7Ludv444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTrDgJ+od2DpvknItplx7PlP4EZSY6GsimTaDpMWbCI
+  standby.ks: >-
+    X2SXjRlPic+oP47h2wE8DIhCShy3/K1wTkUTpRRGcWwAAgAAB+UFFAISIAQH7wUSAhIgBwAAJxDJxmRlCdqyRgcVGZGDWlBqYsjLU4iWXfZxyqF48BiB0AiVQgo1suPI1eU+uPmryg2K0FM3gWqdYoQtHvhJTWedAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwuEtF8JkSwZ4h1MVAmft9hGBgFJli5jG8RaU5piSebwAAAAIAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAei8PSpw8SIqoYk7n0A5OEahM0dorzPGu0BO5bV7tJPQAAAAAAAAABAAMBAAflBRQCEiAEB+ULEAISIAIAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHc2QL8y8sx9DwVHn2IibjMAAAAwAAAAIAc3eK+1/Edb66LfOjfmYEp4cLuQJMyiJwzkb6cpWISDoR2Hr1IwAhVGO5R5mec4sQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/Ri36MFd8OTqz6nfjb0Z0wn0hVBBun7WyIoLxkca8xsAAAACAAAAAQADAQEH5QUUAhIgBAflCxACEiACAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeZwbpt2GYA//1A6wtdSf4AAAAMAAAACDyxsCmfn+9TuBSFH5FzeN7qp/IG48pyBEiqlU1xsrlWCmghfySZrTcT8o7Ludv444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTrDgJ+od2DpvknItplx7PlP4EZSY6GsimTaDpMWbCI
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: train-apiserver-deployment
+  labels:
+    app: train-apiserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: train-apiserver
+  template:
+    metadata:
+      labels:
+        app: train-apiserver
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - train-apiserver      
+            topologyKey: kubernetes.io/hostname
+      tolerations:
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoExecute
+        tolerationSeconds: 300
+      - key: node.kubernetes.io/unreachable
+        operator: Exists
+        effect: NoExecute
+        tolerationSeconds: 300      
+      nodeSelector:
+        api-server: 'true'      
+      containers:
+      - name: train-apiserver
+        image: 10.174.72.64:5000/octopus-train-apiserver:c_project-alex-525
+        imagePullPolicy: IfNotPresent                  
+        ports:
+        - containerPort: 9443
+        volumeMounts:
+        - name: train-apiserver-local
+          mountPath: /mnt/octopus_hdfs
+        - name: octopus-crypto
+          readOnly: true
+          mountPath: /opt/cloud/sec/crypto
+      restartPolicy: Always
+      volumes:
+      - name: train-apiserver-local
+        persistentVolumeClaim:
+          claimName: train-apiserver-pvc
+      - name: octopus-crypto
+        secret:
+          secretName: crypto
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: train-apiserver-service
+spec:
+  type: ClusterIP      
+  selector:
+    app: train-apiserver
+  ports:      
+    - port: 9443
+      targetPort: 9443
+
+---
+
+# Ingress Rule for Train Apiserver
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: train-apiserver-ingress
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /octopus
+          backend:
+            serviceName: train-apiserver-service
+            servicePort: 9443

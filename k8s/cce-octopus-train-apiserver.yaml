@@ -1,0 +1,596 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: octopus-train-apiserver
+  namespace: default
+  selfLink: /apis/apps/v1/namespaces/default/deployments/octopus-train-apiserver
+  uid: ff0b1996-a0ca-4ec4-83ff-c2a8d70f0a39
+  resourceVersion: '4560445'
+  generation: 37
+  creationTimestamp: '2021-05-31T10:32:22Z'
+  labels:
+    appgroup: ''
+    version: v1
+  annotations:
+    deployment.kubernetes.io/revision: '33'
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-06-09T09:56:07Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations': {}
+          'f:labels':
+            .: {}
+            'f:appgroup': {}
+            'f:version': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector':
+            'f:matchLabels':
+              .: {}
+              'f:app': {}
+              'f:version': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:app': {}
+                'f:version': {}
+            'f:spec':
+              'f:affinity':
+                .: {}
+                'f:nodeAffinity': {}
+              'f:containers':
+                'k:{"name":"container-0"}':
+                  .: {}
+                  'f:args': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"UDC.APP_CLIENT_ID"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"UDC.DOMAIN_ID"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.DOMAIN_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.DOMAIN_PROJECT_ID"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.DOMAIN_USER_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.FILE_LOADER_ENDPOINT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.SCC_CONF"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"UDC.SCC_CRYPTO"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.SCC_KS_DEST_PATH"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"UDC.SCC_KS_SRC_PATH"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.TRAIN.PKG.DOCKER.ENDPOINT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.USER_ID"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"UDC.VPC_EP"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"VIAM_AUTHENTICATION_URL"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:configMapKeyRef':
+                          .: {}
+                          'f:key': {}
+                          'f:name': {}
+                    'k:{"name":"evaluate.platform.mode"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"evaluate.resource.cpu"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"evaluate.resource.memory"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"evaluate.resource.spec"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"plugin.pycharm"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.agent.cluster-id"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.agent.image"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.agent.port"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.apig.train-server-domain"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.iam.auth-signing-cert-file"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.platform.evaluate.namespace"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.platform.train.namespace"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"service.swr.organization"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"spring.redis.host"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"train.platform.mode"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"train.resource.cpu"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"train.resource.memory"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"train.resource.spec"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:tcpSocket':
+                      .: {}
+                      'f:port': {}
+                    'f:timeoutSeconds': {}
+                  'f:name': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:tcpSocket':
+                      .: {}
+                      'f:port': {}
+                    'f:timeoutSeconds': {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/opt/cloud/sec/crypto"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+                    'k:{"mountPath":"/opt/cloud/sec/ssl"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+              'f:dnsConfig':
+                .: {}
+                'f:options': {}
+              'f:dnsPolicy': {}
+              'f:imagePullSecrets':
+                .: {}
+                'k:{"name":"default-secret"}':
+                  .: {}
+                  'f:name': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:tolerations': {}
+              'f:volumes':
+                .: {}
+                'k:{"name":"vol-162065048404316223"}':
+                  .: {}
+                  'f:name': {}
+                  'f:secret':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:items': {}
+                    'f:secretName': {}
+                'k:{"name":"vol-162065048793265339"}':
+                  .: {}
+                  'f:name': {}
+                  'f:secret':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:items': {}
+                    'f:secretName': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-06-10T03:15:25Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: octopus-train-apiserver
+      version: v1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: octopus-train-apiserver
+        version: v1
+    spec:
+      volumes:
+        - name: vol-162065048404316223
+          secret:
+            secretName: crypto
+            items:
+              - key: UDC.APP_SECRET
+                path: UDC.APP_SECRET
+              - key: UDC.DATA.VOD_KEYSEC_KEY
+                path: UDC.DATA.VOD_KEYSEC_KEY
+              - key: UDC.DB_USER_PASSWORD
+                path: UDC.DB_USER_PASSWORD
+              - key: UDC.DOMAIN_ACCESS_KEY
+                path: UDC.DOMAIN_ACCESS_KEY
+              - key: UDC.DOMAIN_SECRET_KEY
+                path: UDC.DOMAIN_SECRET_KEY
+              - key: UDC.DOMAIN_USER_PASSWORD
+                path: UDC.DOMAIN_USER_PASSWORD
+              - key: UDC.ES_USER_PASSWORD
+                path: UDC.ES_USER_PASSWORD
+              - key: UDC.KEYSTORE_PASSWORD
+                path: UDC.KEYSTORE_PASSWORD
+              - key: UDC.L1_USER_PASSWORD
+                path: UDC.L1_USER_PASSWORD
+              - key: UDC.MAP_INFO_KEY
+                path: UDC.MAP_INFO_KEY
+              - key: UDC.REDIS_PASSWORD
+                path: UDC.REDIS_PASSWORD
+              - key: primary.ks
+                path: primary.ks
+              - key: standby.ks
+                path: standby.ks
+            defaultMode: 420
+        - name: vol-162065048793265339
+          secret:
+            secretName: ssl-cert
+            items:
+              - key: elasticsearch.jks
+                path: elasticsearch.jks
+              - key: ivehicle.jks
+                path: ivehicle.jks
+              - key: obstrust.jks
+                path: obstrust.jks
+              - key: signing_cert.pem
+                path: signing_cert.pem
+            defaultMode: 420
+      containers:
+        - name: container-0
+          image: 'swr.cn-north-5.myhuaweicloud.com/huawei-iasbu-octopus/octopus-train-apiserver:1.1.0.b061.182'
+          args:
+            - '--spring.profiles.active=north5'
+            - '--spring.datasource.url=jdbc:postgresql://192.168.142.108:5432/ivehicledb?currentSchema=public'
+          env:
+            - name: UDC.SCC_CRYPTO
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.SCC_CRYPTO
+            - name: UDC.TRAIN.PKG.DOCKER.ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.TRAIN.PKG.DOCKER.ENDPOINT
+            - name: UDC.SCC_KS_SRC_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.SCC_KS_SRC_PATH
+            - name: UDC.DOMAIN_PROJECT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.DOMAIN_PROJECT_ID
+            - name: UDC.DOMAIN_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.DOMAIN_ID
+            - name: UDC.DOMAIN_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.DOMAIN_NAME
+            - name: UDC.DOMAIN_USER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.DOMAIN_USER_NAME
+            - name: UDC.VPC_EP
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.VPC_EP
+            - name: train.resource.memory
+              value: 26Gi
+            - name: train.platform.mode
+              value: cce
+            - name: service.agent.image
+              value: 'swr.cn-north-5.myhuaweicloud.com/huawei-iasbu-octopus/octopus-train-development-agent:1.1.0.b060.10'
+            - name: evaluate.resource.memory
+              value: 26Gi
+            - name: service.platform.train.namespace
+              value: default
+            - name: evaluate.platform.mode
+              value: cce
+            - name: evaluate.resource.cpu
+              value: '6'
+            - name: train.resource.cpu
+              value: '6'
+            - name: evaluate.resource.spec
+              value: nvidia-p100
+            - name: UDC.SCC_KS_DEST_PATH
+              value: /opt/cloud/octopus-train-apiServer/scc/ks
+            - name: UDC.SCC_CONF
+              value: /opt/cloud/octopus-train-apiServer/config/scc/scc.conf
+            - name: train.resource.spec
+              value: nvidia-p100
+            - name: service.platform.evaluate.namespace
+              value: default
+            - name: service.iam.auth-signing-cert-file
+              value: config/cert/signing_cert.pem
+            - name: VIAM_AUTHENTICATION_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: VIAM_AUTHENTICATION_URL
+            - name: UDC.APP_CLIENT_ID
+              value: '43'
+            - name: UDC.FILE_LOADER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.FILE_LOADER_ENDPOINT
+            - name: UDC.USER_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: apiserve-config
+                  key: UDC.DOMAIN_USER_ID
+            - name: service.agent.port
+              value: '9022'
+            - name: spring.redis.host
+              value: 192.168.181.22
+            - name: service.apig.train-server-domain
+              value: 'https://192.168.255.22'
+            - name: service.agent.cluster-id
+              value: c201aea0-c1b7-11eb-9659-0255ac101456
+            - name: service.swr.organization
+              value: op-svc-ivehicle
+            - name: plugin.pycharm
+              value: octopus-dev-helper/plugin/octopus-train-plugin-1.0.9.zip
+          resources:
+            limits:
+              memory: 4Gi
+            requests:
+              memory: 2Gi
+          volumeMounts:
+            - name: vol-162065048404316223
+              readOnly: true
+              mountPath: /opt/cloud/sec/crypto
+            - name: vol-162065048793265339
+              readOnly: true
+              mountPath: /opt/cloud/sec/ssl
+          livenessProbe:
+            tcpSocket:
+              port: 9443
+            initialDelaySeconds: 1
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 9443
+            initialDelaySeconds: 1
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: default-secret
+      affinity:
+        nodeAffinity: {}
+      schedulerName: default-scheduler
+      tolerations:
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 300
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 300
+      dnsConfig:
+        options:
+          - name: timeout
+            value: ''
+          - name: ndots
+            value: '5'
+          - name: single-request-reopen
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 37
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2021-06-09T04:12:01Z'
+      lastTransitionTime: '2021-06-09T04:12:01Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-06-10T03:15:25Z'
+      lastTransitionTime: '2021-05-31T10:32:22Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "octopus-train-apiserver-84cb78f95f" has successfully progressed.

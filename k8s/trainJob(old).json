@@ -1,0 +1,336 @@
+﻿ {
+    apiVersion: batch/v1
+    kind: Job
+    metadata: class V1ObjectMeta {
+        annotations: null
+        clusterName: null
+        creationTimestamp: null
+        deletionGracePeriodSeconds: null
+        deletionTimestamp: null
+        finalizers: null
+        generateName: null
+        generation: null
+        labels: {train-job-name=train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed, k8s-job-name=train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0}
+        managedFields: null
+        name: train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0
+        namespace: null
+        ownerReferences: null
+        resourceVersion: null
+        selfLink: null
+        uid: null
+    }
+    spec: class V1JobSpec {
+        activeDeadlineSeconds: null
+        backoffLimit: 0
+        completions: null
+        manualSelector: null
+        parallelism: null
+        selector: null
+        template: class V1PodTemplateSpec {
+            metadata: class V1ObjectMeta {
+                annotations: null
+                clusterName: null
+                creationTimestamp: null
+                deletionGracePeriodSeconds: null
+                deletionTimestamp: null
+                finalizers: null
+                generateName: null
+                generation: null
+                labels: {train-job-name=train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed, k8s-job-name=train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0}
+                managedFields: null
+                name: train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0-pod
+                namespace: null
+                ownerReferences: null
+                resourceVersion: null
+                selfLink: null
+                uid: null
+            }
+            spec: class V1PodSpec {
+                activeDeadlineSeconds: null
+                affinity: class V1Affinity {
+                    nodeAffinity: null
+                    podAffinity: null
+                    podAntiAffinity: class V1PodAntiAffinity {
+                        preferredDuringSchedulingIgnoredDuringExecution: null
+                        requiredDuringSchedulingIgnoredDuringExecution: [class V1PodAffinityTerm {
+                            labelSelector: class V1LabelSelector {
+                                matchExpressions: [class V1LabelSelectorRequirement {
+                                    key: train-job-name
+                                    operator: In
+                                    values: [train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed]
+                                }]
+                                matchLabels: null
+                            }
+                            namespaces: null
+                            topologyKey: kubernetes.io/hostname
+                        }]
+                    }
+                }
+                automountServiceAccountToken: null
+                containers: [class V1Container {
+                    args: [sudo -n /opt/sudoscripts/sudo_octopus_exec.sh && python /home/work/work/run_train.py]
+                    command: [/bin/sh, -c]
+                    env: [class V1EnvVar {
+                        name: OCTPS_TRAIN_TASK_ID
+                        value: 7b6e7166-95c8-4938-ad75-d9338b8f897c
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAINING_ARGS
+                        value: 
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_PROJECT_ID
+                        value: 742cba906b404c598f9ce6d187050f08
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: DLS_APP_URL
+                        value: s3://octopus-raw-742cba906b404c598f9ce6d187050f08/algorithms/algorithm-79131149-841e-422f-a882-931a620ed179/
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_UPLOAD_MODEL
+                        value: true
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAINING_MODE
+                        value: DISTRIBUTED
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_PARAM_P
+                        value: GRPPp(9Pt:lTs$DtcXqnN2
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: DLS_DATA_URL
+                        value: s3://octopus-raw-742cba906b404c598f9ce6d187050f08/dataset-new/dataset-693/version-1/
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_REGION
+                        value: cn-north-1
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_MODEL_ID
+                        value: 0d0f2bd6-d193-4684-8f21-752cef7d98af
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_ENGINE
+                        value: TENSORFLOW
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_TEMP_READ_AK
+                        value: NUJWMkxOMUVSR0FKWkFNTkNBNDg=
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_API_SERVER_ENDPOINT
+                        value: https://d419c85037334141aa551cbe091bd451.apig.cn-north-1.huaweicloudapis.com
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAINING_SCRIPTS
+                        value: /home/guest/work/user-job-dir/algorithm-79131149-841e-422f-a882-931a620ed179/Distribute_MNIST/distributed.py
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TASK_OWNER_PROJECT_ID
+                        value: 742cba906b404c598f9ce6d187050f08
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: DLS_JOB_ID
+                        value: 
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_DOMAIN_ID
+                        value: a7f34312c4d341fa8ee743628df76126
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_TEMP_READ_SECURITY_TOKEN_1
+                        value: eNq1VtuWosgS/aJei4vaxcM8qFyEMhNBbpkvvQRULpmIN5D8+gnKmupe53R3nTOz5oEHJYjYsWPvyDwe2yot5XuqOtJuKT22weKrzc2KKJHIBntmV9EyqhwUVKYZ1vliy9pFEE51L/AmdtmXaRxJO0urx9h4cKRUubG0dPL10ulT5dEStS7d5lpGPBoyhXVpOeY07mhrX22GJZL4DHLc8yV8r15LL8bSLtbudtWmNtfKTLQd4S0jqjfzlUgKFOdMISaAuiT2i9wySqjVkQbNSBNVO4hx65zlhiMTwJKbWILeCqqEn8QtutRi1X7E9axb5jG+0ORZN+RRP74HvG2qTHV4+C7O5YybT7wjF4ojXP6eT29XNPGXzxy+m6p+S/lf308+sKTv/TyxaOWOR1VumFW6/MDx0/5/4POneL33Hj1J24bDf8cEFhPfe6csa/DYl/jexzsWvUW7BPhOomtusZ4kjhQli2uqmHVomUO+Qr/n1cBypvpdGsITm21a4y7ltKVqNPwnFz+fiw+zy9uUZ7+Ii+5EdabZ6m/NJcgtbSBxzkJLu+5iPP0k3kkbytLG77KG/b+1Ypo4YozbxdPmk9gFUfpf9Ou32ZtGgEdrjMMsU/FvsHzMccy/eWrpOxbw2/UTLH4eaxLZ/l5ngaU1VGF3Ovw+LlKiEnQr0V/kA11y0PeUKA/mKdodPNPkiQM+/1zrgOF/89fyEz989t6Q5RT0lo36N8e9oBX0pz4oGOyodx69Mtn2JewRkY7ah33ksuuT9/I0e62+10qVcWct5GyQwSPZDQsP4p3CDeYKqbweW0h2g4K7MWaYew9Xz3ocLDjSjx8YXqvT+YfZdzDzLltFYj1yOUigGKci3JginZZYn0tEhFPXIsB7qFDdmGAxl5FFenepFamVdxlnsOdlsVbMK1W0YZf4p3QrqW5gCBQYkruVJlg32TrwBsTJjQTHCSqlKRJmgSu7p7H3wKLuXj9mCPig74/5cK0CL/Z5gm6gYXUdZBLiuCRB3WNuS0j
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_TEMP_READ_SECURITY_TOKEN_2
+                        value: 3KxzUE1qxiga0RsFRRXrY02o+WSuPjqqoy1dOsYsnXW6ZYgc9kooyLAwFAw4cowlgAzzHG4k9FW/l2g2QcC0bch6nWEHAkcOoBWeRxYp0hW4ww2k2vJw//PGc08c+/gdzAu9qTTZoEvTapiX4K8GXdZCXmIcqCoiyDmqZAFas18JdygXVM3kdj/jRhFSQU69VMmhVCjPNrWhIRu/xl3+J3/GcNQVo85bySP3xN65qsVb/Oj8mN7QFvph0teuI06fXZnZtXqFf1W7k/AAeyLh2Bf/PYhniGge4GM/ynL3dId7+Aw/HUZcn/oGAb9zKUAAPaPXYI92QoCbERFDffrtbUEuDmbLxzgB3F1bb1Qn6yjkSHmjTqbDlCdAmJ0HB6Ni3IINr+RwL8kAVGT1zJ7HMxu9gnodMpRXwqdC4aMc9ZDeA6T0v8N+TwClIHErAU4F1Q+DYVrFCCyJoTYStgAYqmOHneUFXsENEpo7+8g80Kfpd4rBM1oo33kpHOxC9PriO81VlZi8XXbrYFj3x9eyhbx5LdDnPl0NpJCfQ0LmZ3u2ZFcat5TfePbqZmz3Pv/GlrW32D4SnaF6fTdVZSNOi7G7GYcmE2oWXgE++vs7ZQeu1whdhOcyls1lct9sbz67xZS02akwcZ+ELg+5r3WuA1sPx5B7kDVWT+Y1uum0V0oMslif7xbwK0w3W3yZ7+8t6376Sx54Qfr/5bH5yb1/FXqumqlOq86n68u0bbXZsvdjIer/o1su6O85P53Myu3wp49fD6XIX+zC4baZZV6iXuQVGez2hhKGqesCuz1ebSL80Ac8uzvLwSvDLcDrp5xsaDofZal0ulpmbDWt/0q0U6ajWbDNs1L1EvjT1H38CbSK+jA==
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: DLS_USE_DOWNLOADER
+                        value: true
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_MODEL_VERSION_ID
+                        value: 05dabf8e-5924-4dd6-89c9-0b7c6a1b8200
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_USER_NAME
+                        value: op_svc_ivehicle
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_TEMP_READ_SK
+                        value: Nlo5eExrMXc3cFBlUFdLSmhoeXlGZ3F0c1ZqUXd3QnJzcUtEaXozUQ==
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TRAIN_TYPE
+                        value: CCE
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TF_CONFIG
+                        value: {"worker":["train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-1:23456"],"ps":["train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0:23456"]}
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_NODE_RANK
+                        value: 0
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_TOTAL_NODE
+                        value: 2
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_PER_NODE_NUM
+                        value: 1
+                        valueFrom: null
+                    }, class V1EnvVar {
+                        name: OCTPS_WORKER_TYPE
+                        value: ps
+                        valueFrom: null
+                    }]
+                    envFrom: null
+                    image: swr.cn-north-1.myhuaweicloud.com/core-combine/octopus-train-core-py36_tf_1.14.0-phase2-cn4:0.0.54
+                    imagePullPolicy: IfNotPresent
+                    lifecycle: null
+                    livenessProbe: null
+                    name: train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0
+                    ports: [class V1ContainerPort {
+                        containerPort: 23456
+                        hostIP: 0.0.0.0
+                        hostPort: 23456
+                        name: null
+                        protocol: null
+                    }]
+                    readinessProbe: null
+                    resources: class V1ResourceRequirements {
+                        limits: {memory=Quantity{number=53687091200, format=BINARY_SI}, cpu=Quantity{number=5, format=DECIMAL_SI}, nvidia.com/gpu=Quantity{number=1, format=DECIMAL_SI}}
+                        requests: {memory=Quantity{number=53687091200, format=BINARY_SI}, cpu=Quantity{number=5, format=DECIMAL_SI}, nvidia.com/gpu=Quantity{number=1, format=DECIMAL_SI}}
+                    }
+                    securityContext: null
+                    startupProbe: null
+                    stdin: null
+                    stdinOnce: null
+                    terminationMessagePath: null
+                    terminationMessagePolicy: null
+                    tty: null
+                    volumeDevices: null
+                    volumeMounts: [class V1VolumeMount {
+                        mountPath: dev/shm
+                        mountPropagation: null
+                        name: vol-train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0
+                        readOnly: null
+                        subPath: null
+                        subPathExpr: null
+                    }, class V1VolumeMount {
+                        mountPath: /tmp/octopus
+                        mountPropagation: null
+                        name: cce-obs-import-octopus-logs-742cba906b404c598f9ce6d187050f08
+                        readOnly: null
+                        subPath: null
+                        subPathExpr: null
+                    }]
+                    workingDir: null
+                }]
+                dnsConfig: null
+                dnsPolicy: null
+                enableServiceLinks: null
+                ephemeralContainers: null
+                hostAliases: null
+                hostIPC: null
+                hostNetwork: null
+                hostPID: null
+                hostname: null
+                imagePullSecrets: [class V1LocalObjectReference {
+                    name: default-secret
+                }]
+                initContainers: null
+                nodeName: null
+                nodeSelector: {accelerator=nvidia-v100-pcie}
+                overhead: null
+                preemptionPolicy: null
+                priority: null
+                priorityClassName: null
+                readinessGates: null
+                restartPolicy: Never
+                runtimeClassName: null
+                schedulerName: null
+                securityContext: null
+                serviceAccount: null
+                serviceAccountName: null
+                shareProcessNamespace: null
+                subdomain: null
+                terminationGracePeriodSeconds: null
+                tolerations: null
+                topologySpreadConstraints: null
+                volumes: [class V1Volume {
+                    awsElasticBlockStore: null
+                    azureDisk: null
+                    azureFile: null
+                    cephfs: null
+                    cinder: null
+                    configMap: null
+                    csi: null
+                    downwardAPI: null
+                    emptyDir: class V1EmptyDirVolumeSource {
+                        medium: Memory
+                        sizeLimit: null
+                    }
+                    fc: null
+                    flexVolume: null
+                    flocker: null
+                    gcePersistentDisk: null
+                    gitRepo: null
+                    glusterfs: null
+                    hostPath: null
+                    iscsi: null
+                    name: vol-train-7b6e7166-95c8-4938-ad75-d9338b8f897c-distributed-0
+                    nfs: null
+                    persistentVolumeClaim: null
+                    photonPersistentDisk: null
+                    portworxVolume: null
+                    projected: null
+                    quobyte: null
+                    rbd: null
+                    scaleIO: null
+                    secret: null
+                    storageos: null
+                    vsphereVolume: null
+                }, class V1Volume {
+                    awsElasticBlockStore: null
+                    azureDisk: null
+                    azureFile: null
+                    cephfs: null
+                    cinder: null
+                    configMap: null
+                    csi: null
+                    downwardAPI: null
+                    emptyDir: null
+                    fc: null
+                    flexVolume: null
+                    flocker: null
+                    gcePersistentDisk: null
+                    gitRepo: null
+                    glusterfs: null
+                    hostPath: null
+                    iscsi: null
+                    name: cce-obs-import-octopus-logs-742cba906b404c598f9ce6d187050f08
+                    nfs: null
+                    persistentVolumeClaim: class V1PersistentVolumeClaimVolumeSource {
+                        claimName: cce-obs-import-octopus-logs-742cba906b404c598f9ce6d187050f08
+                        readOnly: null
+                    }
+                    photonPersistentDisk: null
+                    portworxVolume: null
+                    projected: null
+                    quobyte: null
+                    rbd: null
+                    scaleIO: null
+                    secret: null
+                    storageos: null
+                    vsphereVolume: null
+                }]
+            }
+        }
+        ttlSecondsAfterFinished: 2592000
+    }
+    status: null
+}

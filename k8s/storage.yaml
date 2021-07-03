@@ -1,0 +1,45 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: apiserver-local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+  
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: train-apiserver-pv
+spec:
+  capacity:
+    storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: apiserver-local-storage
+  local:
+    path: /mnt/octopus_hdfs/alex
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: api-server
+          operator: In
+          values:
+          - 'true'
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: train-apiserver-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: apiserver-local-storage 
